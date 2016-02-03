@@ -2,27 +2,37 @@
 
 #CacheFlusher_v1_WIP
 
+# Removes all files within the directory given as a first argument, and keeps the directory
 function flush {
-    [ -d "$potato"] && rm -ir "$potato/"* || echo "$potato doesn't exist"
+    if [ -d "$1" ]
+    then
+        rm -ir "$1/"*
+    else
+        echo "$1 doesn't exist"
+    fi
 }
-echo
-potato="/Volumes/Scratch/Nuke"* flush 
 
-    #ADOBE
-    #     rm -r "$HOME/Library/Caches/Adobe/After Effects/"*
-    #     rm -r "$HOME/Library/Preferences/Adobe/After Effects/13.5/Cache/"*
-    #     rm -r "$HOME/Library/Application Support/Adobe/Common/Media Cache Files/"*
-    #     rm -r "/Volumes/Scratch/Adobe/"*
-    #     rm -r "/Volumes/Scratch/PSAutoRecover/"*
-    # #MARI
-    #     rm -r "/Volumes/Scratch/Mari/"*
-    # #MOCHA
-    #     rm -r "/Volumes/Scratch/Mocha/"*
-    #     rm -r "/var/tmp.MoTemp/"*
-    # #MODO
-    #     rm -r "$HOME/Library/Application Support/Luxology/AutoSave/"*
-    #     rm -r "/Volumes/Scratch/Modo/"*
-    # #NUKE
-    #     rm -r "/var/tmp/nuke-u501/"*
-    #     rm -r "/var/tmp/nuke-u501/"*
-    #     rm -r "/Volumes/Scratch/Nuke"*
+flush "/Volumes/Scratch/Nuke"
+
+# ADOBE
+flush "$HOME/Library/Caches/Adobe/After Effects"
+flush "$HOME/Library/Preferences/Adobe/After Effects/13.5/Cache"
+flush "$HOME/Library/Application Support/Adobe/Common/Media Cache Files"
+flush "/Volumes/Scratch/Adobe"
+flush "/Volumes/Scratch/PSAutoRecover"
+
+# MARI
+flush "/Volumes/Scratch/Mari"
+
+# MOCHA
+flush "/Volumes/Scratch/Mocha"
+flush "/var/tmp.MoTemp"
+
+# MODO
+flush "$HOME/Library/Application Support/Luxology/AutoSave"
+flush "/Volumes/Scratch/Modo"
+
+# NUKE
+flush "/var/tmp/nuke-u501"
+flush "/var/tmp/nuke-u501"
+flush "/Volumes/Scratch/Nuke"
